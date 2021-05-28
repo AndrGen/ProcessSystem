@@ -1,16 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Common.DB;
 using Common.Extensions;
 using Common.Helpers;
@@ -24,16 +17,14 @@ namespace ProcessSystem
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _env = env;
-            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
         private readonly IWebHostEnvironment _env;
-        private readonly ILogger<Startup> _logger;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -42,6 +33,8 @@ namespace ProcessSystem
 
             services.AddControllers();
             services.AddConfigurationOptions(Configuration);
+
+            services.AddSwaggerDoc();
             services.AddSwaggerGenNewtonsoftSupport();
 
             services.AddMvc().AddNewtonsoftJson();
@@ -51,13 +44,11 @@ namespace ProcessSystem
             services.AddDbContext<ProcessContext> (
                 options =>
                 {
-                    options.UseNpgsql(new ConnectionStringBuilder(Configuration.GetConnectionString("process")).GetPlainString(),
+                    options.UseNpgsql(
+                        new ConnectionStringBuilder(Configuration.GetConnectionString("process")).GetPlainString(),
                         o =>
-                           o.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorCodesToAdd: null));
-                    options
-                        .LogTo(message => _logger.LogTrace(message))
-                        .EnableSensitiveDataLogging()
-                        .EnableDetailedErrors();
+                            o.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30),
+                                errorCodesToAdd: null));
 
                 },
                 ServiceLifetime.Scoped);
@@ -74,10 +65,7 @@ namespace ProcessSystem
             services.AddEventHubVersion();
 
             // Registers required services for health checks
-            services.AddHealthChecksUI().AddInMemoryStorage(o =>
-                o.LogTo(message => _logger.LogTrace(message))
-                .EnableSensitiveDataLogging()
-                .EnableDetailedErrors());
+            services.AddHealthChecksUI().AddInMemoryStorage();
 
         }
 
@@ -93,7 +81,7 @@ namespace ProcessSystem
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
-                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "EventHub v1.0"));
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "ProcessSystem v1.0"));
 
             app.UseExceptionHandler("/error");
 

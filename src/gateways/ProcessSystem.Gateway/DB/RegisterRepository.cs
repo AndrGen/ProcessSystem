@@ -27,7 +27,7 @@ namespace ProcessSystem.DB
         public async Task<Register> FindByChannelAndUrlAsync(Register register)
         {
             return await _context.Register
-                .SingleOrDefaultAsync(sr => sr.Channel == register.Channel && sr.Url == register.Url);
+                .SingleOrDefaultAsync(sr => sr.Name == register.Name && sr.Url == register.Url);
         }
 
 

@@ -23,20 +23,19 @@ namespace ProcessSystem
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-                        .UseUrls()
-                        .UseStartup<Startup>()
-                        .UseSerilog((context, loggerConfiguration) =>
-                        {
-                            LoggerHelper.ConfigureLogging(ref loggerConfiguration);
-                        })
-                        .UseContentRoot(Directory.GetCurrentDirectory())
-                        .ConfigureAppConfiguration((hostingContext, config) =>
-                        {
-                            config.SetBasePath(Directory.GetCurrentDirectory())
-                                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                                .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
-                        });
+                    webBuilder.UseStartup<Startup>();
+
+                })
+                .UseSerilog((context, loggerConfiguration) =>
+                {
+                    LoggerHelper.ConfigureLogging(ref loggerConfiguration);
+                })
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
                 });
     }
 }

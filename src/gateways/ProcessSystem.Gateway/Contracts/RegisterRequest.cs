@@ -5,21 +5,21 @@ namespace ProcessSystem.Contracts
 {
     public class RegisterRequest: IBaseRequest
     {
-        public string Channel { get; set; }
+        public string Name { get; set; }
         public string Url { get; set; }
-        public IList<string> EventTypesList { get; set; }
+        public IList<string> ProcessTypesList { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var errors = new List<ValidationResult>();
 
-            if (string.IsNullOrWhiteSpace(Channel))
+            if (string.IsNullOrWhiteSpace(Name))
                 errors.Add(new ValidationResult("Имя витрины должно быть задано"));
 
             if (string.IsNullOrWhiteSpace(Url))
                 errors.Add(new ValidationResult("Url для ответа пустой"));
 
-            if (EventTypesList == null || EventTypesList.Count == 0)
+            if (ProcessTypesList == null || ProcessTypesList.Count == 0)
                 errors.Add(new ValidationResult("Список событий подписки пустой"));
 
             return errors;

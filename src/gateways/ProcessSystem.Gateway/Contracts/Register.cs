@@ -9,16 +9,16 @@ namespace ProcessSystem.Contracts
         public long Id { get; private set; }
         public string Token { get; private set; }
         public string Url { get; private set; }
-        public string Channel { get; private set; }
-        public string EventTypes { get; private set; }
+        public string Name { get; private set; }
+        public string ProcessTypes { get; private set; }
 
-        public Register(string token, string url, string channel)
+        public Register(string token, string url, string name)
         {
             Token = token;
             Url = url;
-            Channel = channel;
+            Name = name;
         }
 
-        public void SetEventTypes(IList<string> eventTypesList) => EventTypes = JsonConvert.SerializeObject(eventTypesList);
+        public void SetEventTypes(IList<string> eventTypesList) => ProcessTypes = JsonConvert.SerializeObject(eventTypesList);
     }
 }

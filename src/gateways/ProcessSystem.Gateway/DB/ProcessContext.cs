@@ -33,23 +33,23 @@ namespace ProcessSystem.DB
             {
                 entity.ToTable("register", "process");
 
-                entity.HasIndex(e => new { e.Channel, e.Url })
-                    .HasDatabaseName("register_url_channel_uidx")
+                entity.HasIndex(e => new {Channel = e.Name, e.Url })
+                    .HasDatabaseName("register_url_name_uidx")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Channel)
+                entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasColumnName("channel");
+                    .HasColumnName("name");
 
                 entity.Property(e => e.Token)
                     .IsRequired()
                     .HasColumnName("token");
 
-                entity.Property(e => e.EventTypes)
+                entity.Property(e => e.ProcessTypes)
                     .IsRequired()
-                    .HasColumnName("event_types")
+                    .HasColumnName("process_types")
                     .HasColumnType("jsonb");
 
                 entity.Property(e => e.Url)

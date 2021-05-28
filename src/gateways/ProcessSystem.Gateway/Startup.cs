@@ -11,14 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.DB;
 using Common.Extensions;
 using Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 using ProcessSystem.DB;
 using ProcessSystem.Middleware;
+using ProcessSystem.Token;
 using Prometheus;
-using SeedWork.DB;
-using SeedWork.Token;
 
 namespace ProcessSystem
 {

@@ -1,4 +1,4 @@
-﻿namespace SeedWork.DB
+﻿namespace Common.DB
 {
    
     public interface IAggregateRoot { }

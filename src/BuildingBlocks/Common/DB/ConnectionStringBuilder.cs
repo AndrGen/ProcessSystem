@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeedWork.DB
+namespace Common.DB
 {
     public class ConnectionStringBuilder
     {

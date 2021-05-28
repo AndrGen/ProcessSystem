@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Common.DB;
 using Newtonsoft.Json;
-using SeedWork.DB;
 
 namespace ProcessSystem.Contracts
 {

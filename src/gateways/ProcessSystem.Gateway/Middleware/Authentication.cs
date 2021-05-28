@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SeedWork.Token;
+using ProcessSystem.Token;
 
 namespace ProcessSystem.Middleware
 {

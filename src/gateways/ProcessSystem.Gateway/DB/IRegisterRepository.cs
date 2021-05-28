@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Common.DB;
 using ProcessSystem.Contracts;
-using SeedWork.DB;
 
 namespace ProcessSystem.DB
 {

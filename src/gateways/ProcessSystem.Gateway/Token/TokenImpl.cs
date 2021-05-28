@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace SeedWork.Token
+namespace ProcessSystem.Token
 {
     public class TokenImpl : IToken
     {

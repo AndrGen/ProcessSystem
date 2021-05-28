@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SeedWork.Token
+namespace ProcessSystem.Token
 {
 
     public class RegisterTokenResponse

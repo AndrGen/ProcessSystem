@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Common.DB;
 using Microsoft.EntityFrameworkCore;
 using ProcessSystem.Contracts;
-using SeedWork.DB;
 
 namespace ProcessSystem.DB
 {

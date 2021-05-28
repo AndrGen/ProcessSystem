@@ -1,4 +1,4 @@
-﻿namespace SeedWork.Token
+﻿namespace ProcessSystem.Token
 {
     public interface IToken
     {

@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\Common\Common.csproj" />
-    <ProjectReference Include="..\..\BuildingBlocks\SeedWork\SeedWork.csproj" />
   </ItemGroup>
 
 </Project>

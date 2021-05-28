@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using ProcessSystem.Contracts;
 using ProcessSystem.DB;
-using SeedWork.Token;
+using ProcessSystem.Token;
 
 namespace ProcessSystem.Controllers
 {

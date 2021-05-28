@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SeedWork.DB
+namespace Common.DB
 {
     public interface IUnitOfWork : IDisposable
     {        

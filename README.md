@@ -14,4 +14,5 @@
 
 Архитектура микросервисов
 https://docs.microsoft.com/ru-ru/dotnet/architecture/microservices/
+
 https://github.com/dotnet-architecture/eShopOnContainers

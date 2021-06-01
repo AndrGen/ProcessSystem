@@ -1,0 +1,39 @@
+﻿@page "/register"
+@using ProcessSystem.UI.Blazor.Shared
+@inject HttpClient Http
+
+<h1>Register in Process System</h1>
+
+<p>This component demonstrates Register/Unregister</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>@forecasts</p>
+}
+
+<button class="btn btn-primary" @onclick="RegisterProcess">Register</button>
+<button class="btn btn-primary" @onclick="UnregisterProcess">Unregister</button>
+
+@code {
+    private string forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetStringAsync("Register");
+    }
+
+
+    private void RegisterProcess()
+    {
+        forecasts = "Reg";
+    }
+
+    private void UnregisterProcess()
+    {
+        forecasts = "Un Reg";
+    }
+}

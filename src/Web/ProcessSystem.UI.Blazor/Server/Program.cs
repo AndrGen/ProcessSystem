@@ -27,7 +27,7 @@ namespace ProcessSystem.UI.Blazor.Server
                         .CaptureStartupErrors(true)
                         .ConfigureAppConfiguration((hostingContext, config) =>
                         {
-                            config.SetBasePath(Directory.GetCurrentDirectory())
+                            config.SetBasePath(Directory.GetCurrentDirectory().Replace("Client", "Server"))
                                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                                 .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
                         })

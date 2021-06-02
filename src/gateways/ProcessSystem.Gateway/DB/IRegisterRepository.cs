@@ -10,6 +10,6 @@ namespace ProcessSystem.DB
         Task<Register> AddAsync(Register register);
         Task<Register> DeleteAsync(string token);
         Task<Register> FindByTokenAsync(string token);
-        Task<Register> FindByChannelAndUrlAsync(Register register);
+        Task<Register> FindByNameAndUrlAsync(Register register);
     }
 }

@@ -52,7 +52,7 @@ namespace ProcessSystem.Controllers
                         registerRequest.Name);
                 register.SetEventTypes(registerRequest.ProcessTypesList);
 
-                if (await _registerRepository.FindByChannelAndUrlAsync(register) is not null)
+                if (await _registerRepository.FindByNameAndUrlAsync(register) is not null)
                     throw new ArgumentOutOfRangeException(nameof(registerRequest), $"Витрина с {registerRequest.Url} и {registerRequest.Name} уже зерегистрирована");
 
                 var result = await _registerRepository.AddAsync(register);

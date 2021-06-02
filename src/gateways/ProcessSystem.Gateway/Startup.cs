@@ -58,9 +58,9 @@ namespace ProcessSystem
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddShopWindowAuthentication();
+            Authentication.AddAuthentication(services);
 
-            services.AddEventHubHealthChecks(Configuration, _env.EnvironmentName);
+            services.AddHealthChecks(Configuration, _env.EnvironmentName);
 
             services.AddEventHubVersion();
 

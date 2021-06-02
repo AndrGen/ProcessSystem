@@ -33,7 +33,7 @@ namespace ProcessSystem.UnitTests
 
         public void SetupFindByChannelAndUrlSuccess()
         {
-            _registerRepositoryMock.Setup(sw => sw.FindByChannelAndUrlAsync(It.IsAny<Register>()))
+            _registerRepositoryMock.Setup(sw => sw.FindByNameAndUrlAsync(It.IsAny<Register>()))
                 .ReturnsAsync((Register req) => req);
         }
 
@@ -67,7 +67,7 @@ namespace ProcessSystem.UnitTests
 
         public void SetupFindByChannelAndUrlFailure()
         {
-            _registerRepositoryMock.Setup(sw => sw.FindByChannelAndUrlAsync(It.IsAny<Register>()))
+            _registerRepositoryMock.Setup(sw => sw.FindByNameAndUrlAsync(It.IsAny<Register>()))
                 .ReturnsAsync((Register)null);
         }
 

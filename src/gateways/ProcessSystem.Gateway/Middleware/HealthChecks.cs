@@ -8,7 +8,7 @@ namespace ProcessSystem.Middleware
 {
     public static class HealthChecks
     {
-        public static void AddEventHubHealthChecks(this IServiceCollection services, IConfiguration configuration, string envName)
+        public static void AddHealthChecks(this IServiceCollection services, IConfiguration configuration, string envName)
         {
             var hcBuilder = services.AddHealthChecks();
 

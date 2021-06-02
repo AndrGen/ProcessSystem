@@ -8,7 +8,7 @@ namespace ProcessSystem.Middleware
 {
     public static class Authentication
     {
-        public static void AddShopWindowAuthentication(this IServiceCollection services)
+        public static void AddAuthentication(this IServiceCollection services)
         {
 
 

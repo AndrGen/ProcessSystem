@@ -23,13 +23,13 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetStringAsync("Register");
+        forecasts = "2132231";
     }
 
 
-    private void RegisterProcess()
+    private async Task RegisterProcess()
     {
-        forecasts = "Reg";
+        forecasts = await Http.GetStringAsync("ProcessSystem");
     }
 
     private void UnregisterProcess()

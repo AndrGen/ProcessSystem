@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProcessSystem.UI.Blazor.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using ProcessSystem.UI.Blazor.Server.Middleware;
+using ProcessSystem.UI.Blazor.Server.ProcessSystemClient;
 
 namespace ProcessSystem.UI.Blazor.Server.Controllers
 {
@@ -16,12 +10,12 @@ namespace ProcessSystem.UI.Blazor.Server.Controllers
     {
 
         private readonly ILogger<RegisterController> _logger;
-        private readonly ProcessSystemConnectOptions _config;
-
-        public RegisterController(ILogger<RegisterController> logger, IOptions<ProcessSystemConnectOptions> options)
+        private readonly IClient _processSystemClient
+            ;
+        public RegisterController(ILogger<RegisterController> logger, IClient processSystemClient)
         {
             _logger = logger;
-            _config = options.Value;
+            _processSystemClient = processSystemClient;
         }
 
         [HttpGet]

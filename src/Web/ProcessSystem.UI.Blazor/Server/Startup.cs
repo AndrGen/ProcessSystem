@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using ProcessSystem.UI.Blazor.Server.Client;
 using ProcessSystem.UI.Blazor.Server.Middleware;
+using ProcessSystem.UI.Blazor.Server.ProcessSystemClient;
 
 namespace ProcessSystem.UI.Blazor.Server
 {
@@ -28,7 +29,12 @@ namespace ProcessSystem.UI.Blazor.Server
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddHttpClient<IProcessSystem, Client.ProcessSystem>()
+            services.AddHttpClient<IClient, ProcessSystemClient.Client>((sp, client) =>
+                {
+                    ProcessSystemConnectOptions config = sp.GetRequiredService<IOptions<ProcessSystemConnectOptions>>().Value;
+
+                    client.BaseAddress = new Uri(config.Endpoint);
+                })
                 .AddPolicyHandler(HttpPolicy.GetRetryPolicy())
                 .AddPolicyHandler(HttpPolicy.GetCircuitBreakerPolicy());
         }

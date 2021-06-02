@@ -5,7 +5,7 @@
     "Uri": "https://github.com/unchase/Unchase.OpenAPI.Connectedservice/"
   },
   "ExtendedData": {
-    "ServiceName": "ProcessSystem",
+    "ServiceName": "ProcessSystemClient",
     "AcceptAllUntrustedCertificates": true,
     "GeneratedFileName": "ProcessSystemClient",
     "Endpoint": "https://localhost:44375/swagger/v1.0/swagger.json",
@@ -17,7 +17,7 @@
       "ClientBaseClass": null,
       "ConfigurationClass": null,
       "GenerateClientClasses": true,
-      "GenerateClientInterfaces": false,
+      "GenerateClientInterfaces": true,
       "ClientBaseInterface": null,
       "InjectHttpClient": true,
       "DisposeHttpClient": true,
@@ -59,7 +59,7 @@
       "WrapResponseMethods": [],
       "GenerateResponseClasses": true,
       "ResponseClass": "SwaggerResponse",
-      "Namespace": "ProcessSystem.UI.Blazor.Server.ProcessSystem",
+      "Namespace": "ProcessSystem.UI.Blazor.Server.ProcessSystemClient",
       "RequiredPropertiesMustBeDefined": true,
       "DateType": "System.DateTimeOffset",
       "JsonConverters": null,

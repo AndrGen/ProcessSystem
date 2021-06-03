@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using ProcessSystem.UI.Blazor.Server.Middleware;
 using ProcessSystem.UI.Blazor.Server.ProcessSystemClient;
+using ProcessSystem.UI.Blazor.Server.Services;
 
 namespace ProcessSystem.UI.Blazor.Server
 {
@@ -27,7 +28,8 @@ namespace ProcessSystem.UI.Blazor.Server
             services.AddConfigurationOptions(Configuration);
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            services.AddSingleton<ITokenCacheService, TokenCacheService>();
+            
             services.AddHttpClient<IClient, ProcessSystemClient.Client>((sp, client) =>
                 {
                     ProcessSystemConnectOptions config = sp.GetRequiredService<IOptions<ProcessSystemConnectOptions>>().Value;

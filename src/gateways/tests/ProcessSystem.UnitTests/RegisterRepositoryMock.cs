@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using Common.DB;
 using Moq;
@@ -10,13 +9,6 @@ namespace ProcessSystem.UnitTests
 {
     public class RegisterRepositoryMock
     {
-        public static readonly string DefaultToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" +
-                                                     ".eyJzdWIiOiJ1c2VyIiwianRpIjoiMTYwZjU1NzUtNGIyNC00MzEzLWI3YzQtYzk1ZjNhYTk0YTQ5IiwiZXhwIjoxNjQ2MjA5MTM5LCJpc3MiOiJNVFMiLCJhdWQiOiJTaG9wV2luZG93In0" +
-                                                     ".8BHzGfyC28wP_3u6W7UeT9_YvNMGLKokuH3n0Q_1g0g";
-        public static readonly string DefaultUrl = "http://www.ourfirskmockwindow/mockcallback";
-        public static readonly string DefaultName = "TestUser";
-        public static readonly IList<string> DefaultProcessList = new List<string> { nameof(RegisterRepositoryMock) };
-
         private readonly Mock<IRegisterRepository> _registerRepositoryMock = new Mock<IRegisterRepository>();
         private readonly Mock<IUnitOfWork> _unitOfWorkMock = new Mock<IUnitOfWork>();
 

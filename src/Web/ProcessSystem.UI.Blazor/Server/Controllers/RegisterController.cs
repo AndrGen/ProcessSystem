@@ -26,18 +26,12 @@ namespace ProcessSystem.UI.Blazor.Server.Controllers
         [HttpPost("Register")]
         public async Task<string> Get([FromBody] RegisterRequest registerRequest)
         {
-            registerRequest.ProcessTypesList = new List<string>()
-            {
-                "ChangeSim"
-            };
-
             //var result = await _processSystemClient.ApiRegisterRegisterurlAsync(registerRequest);
             var result = new BaseResponse_1OfString { Data = Guid.NewGuid().ToString() };
 
             _cacheService.SetAccessToken("token", result.Data);
 
-            return result.Data;
-
+            return await Task.FromResult(result.Data);
         }
 
         [HttpGet("CheckToken")]

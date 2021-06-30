@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Reflection;
 using Common.Helpers;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,8 @@ namespace ProcessSystem.IntegrationsTest
         public IConfigurationRoot Configuration { get; }
 
         public TestServer TestServer { get; }
+
+        public HttpClient Client { get; set; }
 
         public TestServerWrap(Type startupType, string configFileName)
         {
@@ -50,6 +53,8 @@ namespace ProcessSystem.IntegrationsTest
                 .UseConfiguration(Configuration)
                 .UseStartup(startupType)
             );
+
+            Client = TestServer.CreateClient();
         }
 
         public void Dispose()
